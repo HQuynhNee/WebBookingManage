@@ -29,4 +29,4 @@ Designed for high-demand areas such as university neighborhoods and urban center
 The House Rental Management project bridges the gap between students seeking housing and landlords managing rental properties. It delivers a comprehensive, efficient, and transparent platform that meets the practical needs of its users and provides a strong foundation for future enhancements.
 # Demo
 
-![Project Banner](images/banner.png)
+![Project Banner](DemoImages/Demo.png)
