@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}" />
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+
+</head>
+<body>
+<!-- Include Header Fragment -->
+<div th:replace="~{fragments/header :: header}"></div>
+<main>
+    <!-- Login Form -->
+    <div class="login-form" id="login-form">
+        <h1>Đăng nhập</h1>
+        <h2>Hãy đăng nhập vào RoomioStazy nào</h2>
+
+        <!-- Error Alert for Username -->
+<!--        <div th:if="${#fields.hasErrors('username')}" class="error-alert" id="username-error-alert">-->
+<!--            <p th:errors="*{username}"></p>-->
+<!--        </div>-->
+        <div th:if="${error}" class="error-alert">
+            <p th:text="${error}"></p>
+        </div>
+        <form th:action="@{/login}" method="post" th:object="${user}">
+            <div class="form-group">
+                <input type="text" placeholder="Họ và tên" required th:field="*{username}" />
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Mật khẩu" required th:field="*{password}" />
+            </div>
+            <button type="submit">Đăng nhập</button>
+            <a id="show-signup">Bạn chưa có tài khoản?</a>
+        </form>
+    </div>
+
+    <!-- Signup Form -->
+    <div class="login-form" id="signup-form" style="display: none;">
+        <h1>Đăng ký</h1>
+        <h2>Tạo tài khoản mới tại RoomioStazy</h2>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <div class="form-group">
+                <input type="text" placeholder="Họ và tên" required th:field="*{username}" />
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Email" required th:field="*{email}" />
+            </div>
+            <div class="form-group">
+                <input type="tel" placeholder="Số điện thoại" required th:field="*{phone}" />
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Mật khẩu" required th:field="*{password}" />
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Nhập lại mật khẩu" required th:field="*{confirmPassword}" />
+            </div>
+            <div class="form-group">
+                <label>
+                    <input type="radio" name="role" value="OWNER" th:field="*{role}"> Owner
+                </label>
+                <label>
+                    <input type="radio" name="role" value="STUDENT" checked th:field="*{role}"> Student
+                </label>
+            </div>
+            <button type="submit">Đăng ký</button>
+            <a id="show-login">Đã có tài khoản? Đăng nhập</a>
+        </form>
+    </div>
+</main>
+
+<!-- Include Footer Fragment -->
+<div th:replace="fragments/footer :: footer"></div>
+
+<script>
+    // Script to toggle between login and signup forms
+    document.getElementById('show-signup').addEventListener('click', function() {
+      document.getElementById('login-form').style.display = 'none';
+      document.getElementById('signup-form').style.display = 'block';
+    });
+
+    document.getElementById('show-login').addEventListener('click', function() {
+      document.getElementById('signup-form').style.display = 'none';
+      document.getElementById('login-form').style.display = 'block';
+    });
+
+    // Show error alert if there is a username error
+    if (document.getElementById('username-error-alert').innerText.trim() !== "") {
+        document.getElementById('username-error-alert').style.display = 'block';
+    }
+</script>
+</body>
+</html>

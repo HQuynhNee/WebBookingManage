@@ -1,0 +1,22 @@
+<div th:fragment="search_bar" class="search-container" xmlns:th="http://www.w3.org/1999/xhtml">
+    <form class="search-box" action="" method="get">
+        <!-- Room Code Input -->
+        <select name="roomCode">
+            <option value="">CODE</option>
+            <option value="STD">STD</option>
+            <option value="TWN">TWN</option>
+            <option value="TRPL">TRPL</option>
+        </select>
+        <select name="area">
+            <option value="">Khu Vực</option>
+            <option value="Hà Nội">Hà Nội</option>
+            <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+            <option value="Đà Nẵng">Đà Nẵng</option>
+        </select>
+
+        <button type="submit">
+            <img th:src="@{/img/search_icon.svg}" alt="Search Icon" width="24" height="24" style="margin-right: 8px;">
+            Tìm Kiếm
+        </button>
+    </form>
+</div>

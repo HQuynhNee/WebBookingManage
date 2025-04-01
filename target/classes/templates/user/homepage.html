@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/search_bar.css}" />
+    <link rel="stylesheet" th:href="@{/css/homepage.css}" />
+    <link rel="stylesheet" th:href="@{/css/service.css}" />
+</head>
+<body>
+<!-- Include Header Fragment -->
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/search_bar :: search_bar"></div>
+<main>
+    <div>
+        <div class="main-title">
+            <h1>Khám Phá Phòng Nổi Bật Hằng Ngày</h1>
+            <p>Chúng tôi sẽ luôn dành những điều tốt nhất cho bạn</p>
+        </div>
+        <div class="item-container">
+            <div th:each="house : ${houses}" class="card" th:data-id="${house.id}">
+                <a th:href="@{/house/detail/{id}(id=${house.id})}" class="card-link">
+                    <div class="card-header">
+                        <span class="tag sale" th:text="${#strings.toString(house.houseAction)}">SALE</span>
+                        <img th:src="@{${house.image_url}}" alt="Room Image" class="card-image" />
+                    </div>
+                    <div class="card-body">
+                        <h3 th:text="${house.name}">Phòng Twin BedRoom (TWN)</h3>
+                        <p class="price" th:text="${house.getFormattedPrice()} + '/ Tháng'">4,000,000 VND/ Tháng</p>
+                        <p>Dành cho từ 2 đến 4 người</p>
+                        <div class="info-icons">
+                            <div class="info-item">
+                                <div>
+                                    <img src="/img/bed.svg" alt="Bed Icon">
+                                    <span th:text="${house.facilities[0].getDescription()}">2</span>
+                                </div>
+                                <span>Phòng ngủ</span>
+                            </div>
+                            <div class="info-item">
+                                <div>
+                                    <img src="/img/toilet.svg" alt="WC Icon">
+                                    <span th:text="${house.facilities[1].getDescription()}">2</span>
+                                </div>
+                                <span>WC</span>
+                            </div>
+                            <div class="info-item">
+                                <div>
+                                    <img src="/img/size.svg" alt="Size Icon">
+                                    <span th:text="${house.facilities[2].getDescription()}">2</span>
+                                </div>
+                                <span>Diện tích</span>
+                            </div>
+                            <div class="info-item">
+                                <div>
+                                    <img src="/img/home.svg" alt="Furniture Icon">
+                                    <span>Full</span>
+                                </div>
+                                <span>Nội thất</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="main-title">
+            <h1>Dịch vụ chúng tôi có gì ?</h1>
+            <p>Bạn có muốn biết rằng dịch vụ ở RoomioStayzy có những gì không?</p>
+            <p>Sẽ thú vị lắm</p>
+        </div>
+        <div th:replace="fragments/service :: service"></div>
+    </div>
+</main>
+
+<!-- Include Footer Fragment -->
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

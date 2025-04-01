@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Chủ Nhà</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/search_bar.css}" />
+    <link rel="stylesheet" th:href="@{/css/admin_index.css}" />
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div th:replace="~{fragments/search_bar :: search_bar}"></div>
+
+<main>
+    <div class="main-title">
+        <h1>Thông Tin Chủ Nhà</h1>
+        <p>Đăng ký _ Phê duyệt</p>
+    </div>
+    <div class="container">
+        <!-- Kiểm tra danh sách housingList -->
+        <div th:if="${#lists.isEmpty(housingList)}">
+            <p>Danh sách trống</p>
+        </div>
+
+        <!-- Hiển thị danh sách nếu không trống -->
+        <div th:if="${!#lists.isEmpty(housingList)}">
+            <div th:each="house : ${housingList}" class="card" th:data-id="${house.id}">
+                <div class="above-section">
+                    <div class="col-3">
+                        <div class="profile-img">
+                            <img th:src="@{${house.image_url}}" alt="Profile">
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <span class="edit-icon">
+                            <a th:href="@{/house/edit/{id}(id=${house.id})}">
+                                <img src="./img/edit-icon.svg" alt="Edit Icon">
+                            </a>
+                        </span>
+
+                        <div class="profile-wrapper">
+                            <div class="profile-name">
+                                <h1 th:text="${house.owner.username}">Nguyễn Sông Hương</h1>
+                            </div>
+                            <div class="profile-detail">
+                                <div class="info-row">
+                                    <h4>Số điện thoại</h4>
+                                    <p th:text="${house.owner.phone}">0912482277</p>
+                                </div>
+                                <div class="info-row">
+                                    <h4>Email</h4>
+                                    <p th:text="${house.owner.email}">email@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="below-section">
+                    <div class="info-row">
+                        <h4>Phòng</h4>
+                        <p th:text="${#strings.toString(house.houseType)}">Twin Bedroom (TWN)</p>
+                    </div>
+                    <div class="info-row">
+                        <h4>Tình trạng</h4>
+                        <p>Đang chờ duyệt</p>
+                    </div>
+                    <div class="info-row">
+                        <h4>Ngày đặt</h4>
+                        <p th:text="${house.formatDate()}"></p>
+                    </div>
+                    <div class="info-row">
+                        <h4>Giá tiền</h4>
+                        <p th:text="${house.getFormattedPrice()}"></p>
+                    </div>
+                </div>
+                <div class="action-section">
+                    <button th:onclick="|updateStatus(this, 'APPROVED')|">Phê duyệt</button>
+                    <button th:onclick="|updateStatus(this, 'DISAPPROVED')|">Từ chối</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+
+<script>
+    async function updateStatus(button, newStatus) {
+        const card = button.closest('.card');
+        const housingId = card.dataset.id;
+        button.disabled = true;
+        button.textContent = "Đang cập nhật...";
+        try {
+            const response = await fetch(`/api/house/${housingId}/status?status=${newStatus}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+            });
+
+            if (response.ok) {
+                alert('Trạng thái đã được cập nhật!');
+                location.reload();
+            } else {
+                throw new Error('Không thể cập nhật trạng thái. Vui lòng thử lại sau.');
+            }
+        } catch (error) {
+            alert(error.message);
+        } finally {
+            button.disabled = false;
+            button.textContent = newStatus === 'APPROVED' ? 'Phê duyệt' : 'Từ chối';
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/search_bar.css}" />
+    <link rel="stylesheet" th:href="@{/css/owner_detail.css}" />
+    <link rel="stylesheet" href="./css/ehe.css" />
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+<div th:replace="~{fragments/search_bar :: search_bar}"></div>
+
+<main>
+    <div class="main-title">
+        <h1>Thông Tin Chủ Nhà</h1>
+        <p>Đăng ký _ Phê duyệt</p>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="above-section">
+                <div class="col-3">
+                    <div class="profile-img">
+                        <img src="https://via.placeholder.com/80" alt="Profile">
+                    </div>
+                </div>
+                <div class="col-7">
+                    <span class="edit-icon">
+                        <img>
+                    </span>
+                    <div class="profile-name">
+                        <H1>Nguyễn Sông Hương</H1>
+                        <p>Chờ phê duyệt</p>
+                    </div>
+                    <div class="profile-detail">
+                        <div class="info-row">
+                            <h4>Số điện thoại</h4>
+                            <p>0912482277</p>
+                        </div>
+                        <div class="info-row">
+                            <h4>Email</h4>
+                            <p>email@gmail.com</p>
+                        </div>
+                        <div class="info-row">
+                            <h4>Số lượng phòng</h4>
+                            <p>2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="below-section">
+                <div class="info-row">
+                    <h4>Phòng</h4>
+                    <p>Twin BedRoom (TWN)</p>
+                </div>
+                <div class="info-row">
+                    <h4>Tình trạng</h4>
+                    <p>Đang cập nhập</p>
+                </div>
+                <div class="info-row">
+                    <h4>Ngày đặt</h4>
+                    <p>08/12/20242024</p>
+                </div>
+            </div>
+            <div class="action-section">
+                <button>Phê duyệt</button>
+                <button>Từ chối</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="above-section">
+                <div class="col-3">
+                    <div class="profile-img">
+                        <img src="https://via.placeholder.com/80" alt="Profile">
+                    </div>
+                </div>
+                <div class="col-7">
+                    <span class="edit-icon">
+                        <img>
+                    </span>
+                    <div class="profile-name">
+                        <H1>Nguyễn Sông Hương</H1>
+                        <p>Chờ phê duyệt</p>
+                    </div>
+                    <div class="profile-detail">
+                        <div class="info-row">
+                            <h4>Số điện thoại</h4>
+                            <p>0912482277</p>
+                        </div>
+                        <div class="info-row">
+                            <h4>Email</h4>
+                            <p>email@gmail.com</p>
+                        </div>
+                        <div class="info-row">
+                            <h4>Số lượng phòng</h4>
+                            <p>2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="below-section">
+                <div class="info-row">
+                    <h4>Phòng</h4>
+                    <p>Twin BedRoom (TWN)</p>
+                </div>
+                <div class="info-row">
+                    <h4>Tình trạng</h4>
+                    <p>Đang cập nhập</p>
+                </div>
+                <div class="info-row">
+                    <h4>Ngày đặt</h4>
+                    <p>08/12/20242024</p>
+                </div>
+            </div>
+            <div class="action-section">
+                <button>Phê duyệt</button>
+                <button>Từ chối</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="above-section">
+                <div class="col-3">
+                    <div class="profile-img">
+                        <img src="https://via.placeholder.com/80" alt="Profile">
+                    </div>
+                </div>
+                <div class="col-7">
+                    <span class="edit-icon">
+                        <img>
+                    </span>
+                    <div class="profile-name">
+                        <H1>Nguyễn Sông Hương</H1>
+                        <p>Chờ phê duyệt</p>
+                    </div>
+                    <div class="profile-detail">
+                        <div class="info-row">
+                            <h4>Số điện thoại</h4>
+                            <p>0912482277</p>
+                        </div>
+                        <div class="info-row">
+                            <h4>Email</h4>
+                            <p>email@gmail.com</p>
+                        </div>
+                        <div class="info-row">
+                            <h4>Số lượng phòng</h4>
+                            <p>2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="below-section">
+                <div class="info-row">
+                    <h4>Phòng</h4>
+                    <p>Twin BedRoom (TWN)</p>
+                </div>
+                <div class="info-row">
+                    <h4>Tình trạng</h4>
+                    <p>Đang cập nhập</p>
+                </div>
+                <div class="info-row">
+                    <h4>Ngày đặt</h4>
+                    <p>08/12/20242024</p>
+                </div>
+            </div>
+            <div class="action-section">
+                <button>Phê duyệt</button>
+                <button>Từ chối</button>
+            </div>
+        </div>
+        <div class="card">
+            <div class="above-section">
+                <div class="col-3">
+                    <div class="profile-img">
+                        <img src="https://via.placeholder.com/80" alt="Profile">
+                    </div>
+                </div>
+                <div class="col-7">
+                    <span class="edit-icon">
+                        <img>
+                    </span>
+                    <div class="profile-name">
+                        <H1>Nguyễn Sông Hương</H1>
+                        <p>Chờ phê duyệt</p>
+                    </div>
+                    <div class="profile-detail">
+                        <div class="info-row">
+                            <h4>Số điện thoại</h4>
+                            <p>0912482277</p>
+                        </div>
+                        <div class="info-row">
+                            <h4>Email</h4>
+                            <p>email@gmail.com</p>
+                        </div>
+                        <div class="info-row">
+                            <h4>Số lượng phòng</h4>
+                            <p>2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="below-section">
+                <div class="info-row">
+                    <h4>Phòng</h4>
+                    <p>Twin BedRoom (TWN)</p>
+                </div>
+                <div class="info-row">
+                    <h4>Tình trạng</h4>
+                    <p>Đang cập nhập</p>
+                </div>
+                <div class="info-row">
+                    <h4>Ngày đặt</h4>
+                    <p>08/12/20242024</p>
+                </div>
+            </div>
+            <div class="action-section">
+                <button>Phê duyệt</button>
+                <button>Từ chối</button>
+            </div>
+        </div>
+    </div>
+</main>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>

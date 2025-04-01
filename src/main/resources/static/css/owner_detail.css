@@ -1,0 +1,137 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #000000;
+}
+
+.main-title {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.main-title h1 {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.main-title p {
+    color: #888;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: calc(50% - 20px);
+    padding: 20px;
+}
+
+/* Above Section */
+.above-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.col-3 {
+    flex: 3;
+}
+
+.col-7 {
+    flex: 7;
+}
+
+.profile-img img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-name {
+    margin-left: 15px;
+}
+
+.profile-name h1 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.profile-name p {
+    color: #000000;
+    margin: 5px 0 0 0;
+}
+
+.profile-detail {
+    margin-top: 10px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.info-row h4 {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.info-row p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Below Section */
+.below-section {
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    margin-top: 15px;
+}
+
+/* Action Section */
+.action-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.action-section button {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.action-section button:hover {
+    background-color: #0056b3;
+}
+
+.action-section button:nth-child(2) {
+    background-color: #dc3545;
+}
+
+.action-section button:nth-child(2):hover {
+    background-color: #a71d2a;
+}

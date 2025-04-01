@@ -1,0 +1,27 @@
+<div th:fragment="header" class="header" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="logo">
+        <img th:src="@{/img/logo.svg}" alt="Logo">
+        <span>RoomioStayzy</span>
+    </div>
+    <nav class="nav">
+        <a href="#">Trang chủ</a>
+        <a href="#">Phòng</a>
+        <a href="#">Liên hệ</a>
+    </nav>
+    <div class="right">
+        <div class="login">
+            <img th:src="@{/img/user.png}" alt="User Icon">
+            <!-- Log authentication status -->
+            <span th:if="${#authentication.name != 'anonymousUser'}">
+                <a href="/logout">Đăng xuất</a>
+            </span>
+            <span th:if="${#authentication.name == 'anonymousUser'}">
+                <a href="/login">Đăng nhập</a>
+            </span>
+        </div>
+        <div class="phone">
+            <img th:src="@{/img/phone.svg}" alt="Phone Icon">
+            <span>Phone: (+84) 888-020-966</span>
+        </div>
+    </div>
+</div>

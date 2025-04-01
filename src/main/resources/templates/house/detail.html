@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listing</title>
+    <link rel="stylesheet" th:href="@{/css/owner_home.css}" />
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<main>
+    <div class="container">
+        <div class="column-7">
+            <div class="main-img">
+                <img th:src="@{${housing.image_url}}" alt="Main Image">
+            </div>
+            <div class="name-house">
+                <h1 th:text="${housing.name}"></h1>
+                <p th:text="'Dành cho từ ' + ${housing.houseType == 'TRPL' ? '3 đến 6 người' : '1 đến 2 người'}"></p>
+                <h2 th:text="${housing.getFormattedPrice()}"></h2>
+            </div>
+            <div class="detail">
+                <label th:for="location" class="detail-label">Địa chỉ:</label>
+                <p th:text="${housing.address}"></p>
+            </div>
+
+            <div class="detail">
+                <label th:for="contact" class="detail-label">Liện hệ:</label>
+                <p th:text="${housing.contactPhone}"></p>
+            </div>
+
+            <div class="detail">
+                <label th:for="hours" class="detail-label">Thời gian đóng cửa:</label>
+                <p th:text="${housing.closeTime}"></p>
+            </div>
+            <div class="main-description">
+                <h2>Mô tả</h2>
+                <p th:text="${housing.description}"></p>
+            </div>
+            <div class="main-detail">
+                <div class="col">
+                    <div th:each="facility : ${housing.facilities}" class="square">
+                        <h2 th:text="${facility.name}"></h2>
+                        <p th:text="${facility.description}"></p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="column-3">
+            <div class="sub-img">
+                <div class="google-map">
+                    <iframe th:src="'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2990.274257380938!2d' + ${housing.longitude} + '!3d' + ${housing.latitude} + '!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z' + ${base64} + '!5e0!3m2!1sen!2sus!4v1671220374408!5m2!1sen!2sus'" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+            <div th:if="${#authentication.principal.authorities[0].toString() == 'OWNER'}">
+                <div class="feedback-list">
+                    <div class="comment-item" th:each="comment : ${housing.comments}">
+                        <h4 class="username" th:text="${comme  fnt.student.username}"></h4>
+                        <p th:text="${comment.getFormattedCreatedAt()}"></p>
+                        <p class="comment-content" th:text="${comment.content}"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div th:if="${#authentication.principal.authorities[0].toString() == 'STUDENT'}">
+                <div class="feedback-card" th:data-id="${housing.id}">
+                    <h2>Phản Hồi</h2>
+                    <textarea class="textarea-reply" placeholder="Phản hồi của bạn" aria-label="Phản hồi"></textarea>
+                    <button class="btn-submit">Gửi</button>
+                    <div class="feedback-status"></div>
+                    <div class="processing-status" style="display: none;">Đang gửi...</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+<div th:replace="fragments/footer :: footer"></div>
+<script>
+    document.querySelector('.btn-submit').addEventListener('click', function () {
+    const feedbackCard = document.querySelector('.feedback-card');
+    const feedback = document.querySelector('.textarea-reply').value.trim();
+    const housingId = feedbackCard.getAttribute('data-id'); // Get the housing ID
+    const feedbackStatus = document.querySelector('.feedback-status');
+    const processingStatus = document.querySelector('.processing-status'); // Processing status element
+
+    if (feedback && housingId) {
+        feedbackStatus.textContent = '';
+        processingStatus.style.display = 'block'; // Show processing status
+        const commentData = {
+            comment: feedback,
+            house_Id: housingId,
+        };
+
+        fetch('/api/comments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(commentData),
+        })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Failed to send comment');
+                }
+            })
+            .then(data => {
+                processingStatus.style.display = 'none'; // Hide processing status
+                feedbackStatus.textContent = 'Phản hồi đã được gửi!';
+                feedbackStatus.classList.add('success');
+                document.querySelector('.textarea-reply').value = '';
+            })
+            .catch(error => {
+                processingStatus.style.display = 'none'; // Hide processing status
+                feedbackStatus.textContent = 'Có lỗi xảy ra: ' + error.message;
+                feedbackStatus.classList.add('error');
+            });
+    } else {
+        feedbackStatus.textContent = 'Vui lòng nhập phản hồi và đảm bảo housingId hợp lệ!';
+        feedbackStatus.classList.add('error');
+    }
+});
+
+</script>
+</body>
+</html>

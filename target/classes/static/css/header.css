@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    box-shadow: 0;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+.logo {
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+.nav {
+    display: flex;
+    gap: 20px;
+}
+.nav a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.nav a:hover {
+    color: #007bff;
+}
+.right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.right a {
+    text-decoration: none;
+    color: #000000;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.right a:hover {
+    color: #007bff;
+}
+.right .phone {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: #555;
+}
+.right .phone img {
+    margin-right: 5px;
+    height: 20px;
+}
+.right .login {
+    display: flex;
+    align-items: center;
+}
+.right .login img {
+    margin-right: 5px;
+    height: 20px;
+}

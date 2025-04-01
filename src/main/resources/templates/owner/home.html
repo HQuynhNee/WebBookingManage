@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Listing</title>
+    <link rel="stylesheet" th:href="@{/css/owner_home.css}" />
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+</head>
+<body>
+    <div th:replace="fragments/header :: header"></div>
+    <main>
+        <div class="container">
+            <div class="column-7">
+                <div class="main-img">
+
+                    <img src="/img/mainhome.svg">
+                </div>
+                <div class="name-house">
+                    <h1>Phòng Triple BedRoom (TRPL)</h1>
+                    <p>Dành cho từ 3 đến 6 người</p>
+                    <h2>7,000,000 VNĐ/Tháng</h2>
+                </div>
+                <div class="main-description">
+                    <h2>Mô tả</h2>
+                    <p>RoomioStayzy hân hạnh giới thiệu đến bạn một căn nhà cho thuê lý tưởng tại khu vực Thành phố Hồ Chí Minh . Căn nhà được thiết kế với không gian sống thoải mái, hiện đại, và đầy đủ tiện nghi, phù hợp cho tất cả mọi người khi đến thuê tại RoomioStayzy.</p>
+                    <h3>Vị trí</h3>
+                    <p>Gần các tiện ích như siêu thị, chợ, trường học, bệnh viện.</p>
+                    <p>Khu dân cư yên tĩnh, giao thông thuân tiện, sát trung tâm thành phố</p>
+                    <p>Gần các tuyến xe buýt.</p>
+                </div>
+                <div class="main-detail">
+                    <div class="col">
+                        <div class="square">
+                        <span class="icon">
+                            <img src="/img/size.svg" alt="Size Icon">
+                        </span>
+                            <h2>Diện tích</h2>
+                            <p>23m^2</p>
+                        </div>
+                        <div class="bedroom">
+                        <span class="icon">
+                            <img src="/img/bed.svg" alt="Bed Icon">
+                        </span>
+                            <h2>Phòng ngủ</h2>
+                            <p>3</p>
+                        </div>
+                        <div class="WC">
+                        <span class="icon">
+                           <img src="/img/toilet.svg" alt="WC Icon">
+                        </span>
+                            <h2>WC</h2>
+                            <p>2</p>
+                        </div>
+                        <div class="inhouse">
+                        <span class="icon">
+                             <img src="/img/home.svg" alt="Furniture Icon">
+                        </span>
+                            <h2>Nội thất</h2>
+                            <p>0</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="parking">
+                        <span class="icon">
+                            <img src="/img/parking.svg" alt="Parking Icon">
+                        </span>
+                            <h2>Bãi xe</h2>
+                            <p>Có</p>
+                        </div>
+                        <div class="Wifi">
+                            <span class="icon">
+                                <img src="/img/wifi.svg" alt="Wifi Icon">
+                            </span>
+                                <h2>Wi-fi</h2>
+                                <p>Free</p>
+                        </div>
+                        <div class="Contact">
+                            <span class="icon">
+                                <img src="/img/phone.svg" alt="Contact Icon">
+                            </span>
+                            <h2>Contact</h2>
+                            <p>0123456789</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column-3">
+                <div class="sub-img">
+                    <img src="/img/map.svg">
+                </div>
+                <div class="sub-comment">
+                    <div class="comment-title">
+                        <h1>Feedback</h1>
+                    </div>
+                    <div class="feedback">
+                        <h2 class ="username">username1</h2>
+                        <p>comment1 here</p>
+                        <h2 class ="username">username2</h2>
+                        <p>comment2 here</p>
+                        <h2 class ="username">username3</h2>
+                        <p>comment3 here</p>
+                    </div>
+                </div>
+                <div class="feedback-card">
+                    <h2>Phản Hồi</h2>
+                    <p class="username">N.S.H</p>
+                    <input type="text" class="input-feedback" placeholder="Tôi có thể...?">
+                    <textarea class="textarea-reply" placeholder="Phản hồi của bạn"></textarea>
+                    <button class="btn-submit">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
